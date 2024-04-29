@@ -28,15 +28,17 @@ app.get('/usuarios', (req, res) => {
 
 //Create
 app.post('/usuarios', (req, res) => {
+    const lastId = usuarios[usuarios.length - 1].id;
+
     const nuevoPersonaje = {
-        id: usuarios.length + 1,
+        id: lastId + 1,
         nombre: req.body.nombre,
         edad: req.body.edad,
         lugarProcedencia: req.body.lugarProcedencia
     }
 
     usuarios.push(nuevoPersonaje);
-    res.status(201).json(nuevoPersonaje);
+    res.status(201).json(usuarios);
 })
 
 //Read
